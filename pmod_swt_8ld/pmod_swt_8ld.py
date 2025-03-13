@@ -1,5 +1,6 @@
 import gpiod
 import time
+import RPi.GPIO as GPIO
 
 # Définition des broches GPIO des interrupteurs
 GPIO_CHIP = "/dev/gpiochip0"
