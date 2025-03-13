@@ -4,7 +4,8 @@ import time
 # Définition des broches GPIO des interrupteurs
 GPIO_CHIP = "/dev/gpiochip0"
 SWITCH_COUNT = 8
-SWITCH_PINS = [8, 9, 10, 11, 18, 19, 20, 21]
+SWITCH_PINS = [8, 10, 9, 11, 19, 21, 20, 18]
+LED_PINS = [16, 14, 15, 17, 4, 12, 5, 6]
 
 def lire_interrupteurs():
     """Lit l'état des interrupteurs et retourne une valeur entière correspondant aux LEDs."""
