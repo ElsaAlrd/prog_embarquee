@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-LDFLAGS = -lgpiod
+LDFLAGS = -lwiringPi
 TARGET = pmod_swt
 
 all: $(TARGET)
