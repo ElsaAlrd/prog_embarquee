@@ -13,12 +13,6 @@
 void read_sensor(int i2c_fd, uint8_t reg, uint16_t *data) {
     uint8_t buffer[2];
 
-    // Écriture du registre cible
-    if (write(i2c_fd, &reg, 1) != 1) {
-        perror("Erreur lors de l'écriture du registre");
-        return;
-    }
-
     // Attente pour la conversion (6.50 ms pour 14 bits)
     usleep(6500);
 
@@ -35,11 +29,7 @@ void read_config_register(int i2c_fd) {
     uint8_t reg = 0x02; // Registre de configuration
     uint8_t buffer[2];
 
-    if (write(i2c_fd, &reg, 1) != 1) {
-        perror("Erreur lors de l'écriture du registre");
-        return;
-    }
-
+  
     if (read(i2c_fd, buffer, 2) != 2) {
         perror("Erreur lors de la lecture du registre");
         return;
@@ -59,11 +49,6 @@ float convert_humidity(uint16_t raw_data) {
 void read_sensor_id(int i2c_fd) {
     uint8_t cmd[2] = {0xFC, 0xC9}; // Commande pour lire l'ID
     uint8_t buffer[8];
-
-    if (write(i2c_fd, cmd, 2) != 2) {
-        perror("Erreur lors de l'écriture pour l'ID");
-        return;
-    }
 
     if (read(i2c_fd, buffer, 8) != 8) {
         perror("Erreur lors de la lecture de l'ID");
